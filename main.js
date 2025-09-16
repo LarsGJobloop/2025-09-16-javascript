@@ -1,8 +1,14 @@
+// Takes the createTaskCard function from
+// the referenced JavaScript file
 import { createTaskCard } from "./createTaskCard.js"
 
+// Stores the list of all tasks we have
 const tasks = [
+  // A single task item using JavaScript Objects
   {
+    // A single data field
     title: "Mince meat",
+    // Another data field
     imageReference: "assets/mince-meat.avif"
   },
   {
@@ -15,9 +21,17 @@ const tasks = [
   }
 ]
 
+// Get the <ol id="task-list"> element from the Document
+// So that we can insert elements into it
 const taskList = document.querySelector("#task-list")
 
+// Go through all items defined in the
+// tasks list (line 6)
 for (const task of tasks) {
+  // Use the function (our assistant)
+  // provid him with the specific task
+  // and use the returned <li> element
   const card = createTaskCard(task)
+  // Append that to the end of the HTML <ol> element
   taskList.append(card)
 }
