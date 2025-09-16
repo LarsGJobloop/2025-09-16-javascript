@@ -5,22 +5,30 @@ import { createTaskCard } from "./createTaskCard.js"
 // Stores the list (JS calls them Arrays) of all tasks we have
 const tasks = []
 
+// Get the <form id="task-form"> object from the document
 const taskForm = document.querySelector("#task-form")
+// Whenever the Submit event occours, run the function (() => {})
 taskForm.addEventListener("submit", (event) => {
-  event.preventDefault() // Form refresh page, we ignore it
+  // Form causes a page refresh, we ignore it
+  event.preventDefault()
+
+  // Get the correct input elements
   const titleElement = taskForm.querySelector("#title")
   const imageReferenceElement = taskForm.querySelector("#image")
 
+  // Collect all the information into an object
   const newTask = {
     // <element>.value is the user input value
     title: titleElement.value,
     imageReference: imageReferenceElement.value,
   }
 
+  // Add it to the tasks list
   tasks.push(newTask)
 
+  // Rerender the HTML
   render()
-  
+
   // Clear out form
   taskForm.reset()
 })
