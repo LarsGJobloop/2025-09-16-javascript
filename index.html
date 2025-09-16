@@ -9,7 +9,15 @@
 </head>
 
 <body>
-  <button id="add-task">Add Predefined Task</button>
+  <form id="task-form">
+    <label>Title</label>
+    <input id="title" type="text" name="title">
+
+    <label>Image URL</label>
+    <input id="image" type="text" name="image">
+
+    <button type="submit">Add</button>
+  </form>
 
   <ol id="task-list"></ol>
 

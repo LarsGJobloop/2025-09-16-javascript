@@ -5,20 +5,24 @@ import { createTaskCard } from "./createTaskCard.js"
 // Stores the list (JS calls them Arrays) of all tasks we have
 const tasks = []
 
-const addTaskButton = document.querySelector("#add-task")
-addTaskButton.addEventListener("click", () => {
-  console.log("Adding another task")
-  tasks.push(
-    // A single task item using JavaScript Objects
-    {
-      // A single data field
-      title: "Mince meat",
-      // Another data field
-      imageReference: "assets/mince-meat.avif"
-    }
-  )
+const taskForm = document.querySelector("#task-form")
+taskForm.addEventListener("submit", (event) => {
+  event.preventDefault() // Form refresh page, we ignore it
+  const titleElement = taskForm.querySelector("#title")
+  const imageReferenceElement = taskForm.querySelector("#image")
+
+  const newTask = {
+    // <element>.value is the user input value
+    title: titleElement.value,
+    imageReference: imageReferenceElement.value,
+  }
+
+  tasks.push(newTask)
 
   render()
+  
+  // Clear out form
+  taskForm.reset()
 })
 
 function render() {
